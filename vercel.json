@@ -1,16 +1,13 @@
 {
-  "version": 2,
-  "installCommand": "cd backend && npm ci && cd ../frontend && npm ci",
-  "buildCommand": "cd backend && npm run build && cd ../frontend && npm run build",
-  "outputDirectory": "frontend/dist",
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "frontend",
+      "routePrefix": "/",
+      "framework": "vite"
     },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+    "backend": {
+      "entrypoint": "backend",
+      "routePrefix": "/_/backend"
     }
-  ]
+  }
 }
