@@ -189,7 +189,7 @@ export default function DocumentsPage() {
 
           {isLoading ? (
             view === 'grid' ? <SkeletonCard /> : <SkeletonTableRow />
-          ) : filesData?.data?.length > 0 ? (
+          ) : filesData && filesData.data && filesData.data.length > 0 ? (
             <>
               {view === 'grid' ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

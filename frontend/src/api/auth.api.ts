@@ -26,20 +26,14 @@ interface ResetPasswordPayload {
   newPassword: string;
 }
 
-interface ApiResponse<T> {
-  success: boolean;
-  message: string;
-  data: T;
-}
-
 export const authApi = {
   login: async (payload: LoginPayload): Promise<AuthResponse> => {
-    const { data } = await axiosInstance.post<ApiResponse<AuthResponse>>('/auth/login', payload);
+    const { data } = await axiosInstance.post<AuthResponse>('/auth/login', payload);
     return data;
   },
 
   register: async (payload: RegisterPayload): Promise<AuthResponse> => {
-    const { data } = await axiosInstance.post<ApiResponse<AuthResponse>>('/auth/register', payload);
+    const { data } = await axiosInstance.post<AuthResponse>('/auth/register', payload);
     return data;
   },
 
@@ -48,7 +42,7 @@ export const authApi = {
   },
 
   refreshToken: async (): Promise<AuthResponse> => {
-    const { data } = await axiosInstance.post<ApiResponse<AuthResponse>>('/auth/refresh');
+    const { data } = await axiosInstance.post<AuthResponse>('/auth/refresh');
     return data;
   },
 
@@ -65,12 +59,12 @@ export const authApi = {
   },
 
   getProfile: async (): Promise<User> => {
-    const { data } = await axiosInstance.get<ApiResponse<User>>('/auth/profile');
+    const { data } = await axiosInstance.get<User>('/auth/profile');
     return data;
   },
 
   updateProfile: async (payload: Partial<Pick<User, 'name' | 'avatar'>>): Promise<User> => {
-    const { data } = await axiosInstance.put<ApiResponse<User>>('/auth/profile', payload);
+    const { data } = await axiosInstance.put<User>('/auth/profile', payload);
     return data;
   },
 };
